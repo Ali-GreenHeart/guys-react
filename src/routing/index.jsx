@@ -5,8 +5,14 @@ const HomePage = lazy(() => import("../pages/Home"))
 const ContactPage = lazy(() => import("../pages/Contact"))
 const LandingContentWrapper = lazy(() => import("../components/layout/LandingContentWrapper"))
 const DashboardContentWrapper = lazy(() => import("../components/layout/DashboardContentWrapper"))
-// code splitting
-const WebRouting = ({ }) => {
+const AliGithubContentWrapper = lazy(() => import("../components/layout/AliGithubContentWrapper"))
+
+// github pages
+const AliGithub = lazy(() => import("../pages/AliGithub"))
+const AliFollowers = lazy(() => import("../pages/AliGithub/Followers"))
+const AliRepos = lazy(() => import("../pages/AliGithub/Repos"))
+
+const WebRouting = () => {
     return (
         <Suspense fallback={<div>loading...</div>}>
             <Routes>
@@ -18,6 +24,11 @@ const WebRouting = ({ }) => {
                 <Route Component={DashboardContentWrapper}>
                     {/* nested routes */}
                     <Route path="/dashboard" element={<div>dashboard page</div>} />
+                </Route>
+                <Route path="ali-github" Component={AliGithubContentWrapper}>
+                    <Route path="" Component={AliGithub} />
+                    <Route path="followers" Component={AliFollowers} />
+                    <Route path="repos" Component={AliRepos} />
                 </Route>
             </Routes>
         </Suspense>
