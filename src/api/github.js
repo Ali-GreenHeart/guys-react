@@ -28,7 +28,14 @@ export const getAliFollowers = async () => {
 export const getAliRepos = async () => {
     const { data } = await axios.get(GITHUB_URL + '/repos');
     let reposCount = data.length;
-    const randomIndexes = Array.from({ length: 10 }, () => Math.floor(Math.random() * reposCount));
+    let randomIndexes = [];
+    for (let i = 0; i < 10; i++) {
+        let randomNumber = Math.floor(Math.random() * reposCount)
+        while (randomIndexes.includes(randomNumber)) {
+            randomNumber = Math.floor(Math.random() * reposCount)
+        }
+        randomIndexes.push(randomNumber)
+    }
 
     const repos = randomIndexes.map((index) => ({
         name: data[index].name,
