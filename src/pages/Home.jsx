@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 // let count = 0; // RAM 
 
@@ -18,13 +19,14 @@ import { useState } from "react";
 // console.log('1', expensiveOperation(2))
 // console.log('2', expensiveOperation(3))
 // console.log('3', expensiveOperation(2))
-const HomePage = (props) => {
+const HomePage = () => {
     const [count, setCount] = useState(0); // state, setState
+    const { email } = useContext(AuthContext)
     // hal veziyyet ( modal aciq bagli ), data 
     // deyisimi render edir!
     return (
         <div>
-            <h1>Counter {count} </h1>
+            <h1>{email || "---"}'s Counter {count} </h1>
             <button onClick={() => { setCount(count + 1) }}>+</button>
             <button onClick={() => { setCount(count - 1) }}>-</button>
             <button onClick={() => { setCount(2) }}>2</button>
