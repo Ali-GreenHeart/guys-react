@@ -23,7 +23,7 @@ const WebRouting = () => {
                     <Route path="/about" Component={AboutPage} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/counter-with-reducer" element={<CounterWithReducer />} />
-                    <Route path="/user-page" element={<UserPage />} />
+                    <Route path="/users-page" element={<UserPage />} />
                 </Route>
                 <Route Component={DashboardContentWrapper}>
                     {/* nested routes */}
