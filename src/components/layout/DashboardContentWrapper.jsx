@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router"
 
-const DashboardContentWrapper = ({ }) => {
+const DashboardContentWrapper = () => {
     return (
         <div>
             <Link to="/">ana sehife</Link>

@@ -1,35 +1,25 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-// let count = 0; // RAM 
+const reducer = (_setCount) => {
+    return {
+        handleInc: () => _setCount((previousValue) => previousValue + 1),
+        handleDec: () => _setCount((count) => count - 1),
+        handleStatic: () => _setCount(2)
+    }
+}
 
-// IDC -> i don't care
-// menim sene verdiyim funksionalliqdan istifade et!
-// state , props
-// let cache = {};
-// function expensiveOperation(key) {
-//     if (cache[key]) {
-//         return cache[key]
-//     }
-//     console.log('agir emeliyyat')
-//     let result = key ** 2
-//     cache[key] = result
-//     return result;
-// }
-// console.log('1', expensiveOperation(2))
-// console.log('2', expensiveOperation(3))
-// console.log('3', expensiveOperation(2))
 const HomePage = () => {
-    const [count, setCount] = useState(0); // state, setState
+    const [count, setCount] = useState(0);
     const { email } = useContext(AuthContext)
-    // hal veziyyet ( modal aciq bagli ), data 
-    // deyisimi render edir!
+    const { handleInc, handleDec, handleStatic } = reducer(setCount)
+
     return (
         <div>
             <h1>{email || "---"}'s Counter {count} </h1>
-            <button onClick={() => { setCount(count + 1) }}>+</button>
-            <button onClick={() => { setCount(count - 1) }}>-</button>
-            <button onClick={() => { setCount(2) }}>2</button>
+            <button onClick={handleInc}>+</button>
+            <button onClick={handleDec}>-</button>
+            <button onClick={handleStatic}>2</button>
             <button onClick={() => console.log(count)}>console</button>
         </div>
     )

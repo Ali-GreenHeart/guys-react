@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router"
 import { lazy, Suspense } from "react"
+import CounterWithReducer from "../components/CounterWithReducer"
 const AboutPage = lazy(() => import("../pages/About"))
 const HomePage = lazy(() => import("../pages/Home"))
 const ContactPage = lazy(() => import("../pages/Contact"))
@@ -20,6 +21,7 @@ const WebRouting = () => {
                     <Route path="/" Component={HomePage} />
                     <Route path="/about" Component={AboutPage} />
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/counter-with-reducer" element={<CounterWithReducer />} />
                 </Route>
                 <Route Component={DashboardContentWrapper}>
                     {/* nested routes */}
